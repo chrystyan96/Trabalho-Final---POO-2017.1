@@ -23,6 +23,10 @@ public abstract class Rotas {
 		this.setCustoGrama(custoGrama);
 	}
 	
+	public Rotas() {
+		
+	}
+	
 	public Rotas(String id, Localidade origem, Localidade destino) {
 	this.setId(id);
 	//this.setTempoEntrega(tempoEntrega);

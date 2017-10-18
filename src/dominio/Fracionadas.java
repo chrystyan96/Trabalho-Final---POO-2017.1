@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 public class Fracionadas extends Rotas implements IRotas{
 
+	private Diretas rotaPrincipal;
 	private ArrayList<Rotas> rotas;
 	
-	public Fracionadas(String id, Localidade origem, Localidade destino) {
+	public Fracionadas(String id, Localidade origem, Localidade destino, Diretas rotaPrincipal) {
 		super(id, origem, destino);
+		this.setRotaPrincipal(rotaPrincipal);
 		this.rotas = new ArrayList<Rotas>();
 	}
 	
@@ -55,6 +57,16 @@ public class Fracionadas extends Rotas implements IRotas{
 	public double calcularRotas(Localidade origem, Localidade destino, double peso) {
 		
 		return 0;
+	}
+
+
+	public Diretas getRotaPrincipal() {
+		return this.rotaPrincipal;
+	}
+
+
+	public void setRotaPrincipal(Diretas rotaPrincipal) {
+		this.rotaPrincipal = rotaPrincipal;
 	}
 	
 }

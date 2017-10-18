@@ -9,8 +9,9 @@ public class Main {
 	
 	static Diretas d1 = new Diretas("e200", 3, l1, l2, 10.0, 20.0, 0.15);
 	static Diretas d2 = new Diretas("e201", 2, l3, l4, 15.0, 25.0, 0.30);
+	static Diretas d3 = new Diretas("e202", 1, l4, l1, 17.0, 21.0, 0.50);
 	
-	static Fracionadas f1 = new Fracionadas("e300", l1, l4);
+	static Fracionadas f1 = new Fracionadas("e300", l1, l4, d3);
 	
 	
 	public static void main(String[] args) {

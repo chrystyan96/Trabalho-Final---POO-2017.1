@@ -10,6 +10,10 @@ public class Diretas extends Rotas{
 		super(id, tempoEntrega, origem, destino, capacidadeAlocada, capacidadeTotal, custoGrama);
 	}
 	
+	public Diretas() {
+		super();
+	}
+	
 	@Override
 	public double capacidadeTrasnporte() {
 		return this.getCapacidadeTotal() - this.getCapacidadeAlocada();
