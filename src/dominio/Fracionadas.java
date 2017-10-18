@@ -2,25 +2,20 @@ package dominio;
 
 import interfaceUI.IRotas;
 
+import java.util.ArrayList;
+
 public class Fracionadas extends Rotas implements IRotas{
 
-	private Rotas[] rotas;
-	private Fracionadas[] caminhos;	
+	private ArrayList<Rotas> rotas;
 	
 	public Fracionadas(String id, Localidade origem, Localidade destino) {
 		super(id, origem, destino);
-		this.rotas = new Rotas[0];
-		this.caminhos = new Fracionadas[0];
+		this.rotas = new ArrayList<Rotas>();
 	}
 	
 	
 	public void addRota(Diretas rota) {
-		Rotas[] novo = new Rotas[this.rotas.length + 1];
-		for (int i = 0; i < this.rotas.length; i++) {
-			novo[i] = this.rotas[i];
-		}
-		novo[novo.length - 1] = rota;
-		this.rotas = novo;
+		this.rotas.add(rota);
 	}
 	
 	//public String origemCaminho() {
@@ -29,10 +24,10 @@ public class Fracionadas extends Rotas implements IRotas{
 	
 	@Override
 	public double capacidadeTrasnporte() {
-		double menorCusto = this.rotas[0].capacidadeTrasnporte();
-		for (Rotas atual : this.rotas) {
-			if(atual.capacidadeTrasnporte() < menorCusto) {
-				menorCusto = atual.capacidadeTrasnporte();
+		double menorCusto = this.rotas.get(0).capacidadeTrasnporte();
+		for(int i = 1; i < this.rotas.size(); i++){
+			if(this.rotas.get(i).capacidadeTrasnporte() < menorCusto){
+				menorCusto = this.rotas.get(i).capacidadeTrasnporte();
 			}
 		}
 		return menorCusto;
@@ -53,19 +48,8 @@ public class Fracionadas extends Rotas implements IRotas{
 		for (Rotas atual : this.rotas) {
 			tempo += atual.tempoEntrega();
 		}
-		return tempo + this.rotas.length - 1;
+		return tempo + this.rotas.size() - 1;
 	}
-	
-	public void addCaminho(Fracionadas caminho){
-		Fracionadas[] novo = new Fracionadas[this.caminhos.length + 1];
-		for (int i = 0; i < this.caminhos.length; i++) {
-			novo[i]= this.caminhos[i];
-		}
-		novo[novo.length - 1] = caminho;
-		this.caminhos = novo;
-	}
-	
-	
 	
 	@Override
 	public double calcularRotas(Localidade origem, Localidade destino, double peso) {
