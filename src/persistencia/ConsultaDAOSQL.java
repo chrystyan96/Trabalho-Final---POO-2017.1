@@ -73,9 +73,10 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
     }
     
     public void getRotaOrigem(){
+    	ArrayList rotaOrigem = new ArrayList();
     	try {
 			PreparedStatement stmt = conn.prepareStatement(SELECT_ROTAS_ORIGEM);
-			stmt.get
+			rotaOrigem.add(stmt.getInt("id"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
