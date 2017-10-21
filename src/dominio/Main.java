@@ -25,7 +25,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		f1.addRota(d2);
-		f2.addRota(f1);
 		f2.addRota(d3);
 		//f2.addRota(d3);
 		//f2.addRota(d3);
