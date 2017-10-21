@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/persistencia/DadosSQL.java</name>
+			<type>1</type>
+			<location>C:/Users/Usuario/Documents/POO/Trabalho-Final---POO-2017.1/src/persistencia/DadosSQL.java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

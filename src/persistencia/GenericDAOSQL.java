@@ -13,13 +13,17 @@ public abstract class GenericDAOSQL{
 	
 	private Connection conn = null;
 	
-	protected Connection getConnection() throws SQLException{
-		if(this.conn != null)
+	protected Connection getConnection(){
+		try {
+			if(this.conn != null)
+				return this.conn;
+			DriverManager.registerDriver(new org.postgresql.Driver());
+			this.conn = DriverManager.getConnection(GenericDAOSQL.URI,
+			 								        GenericDAOSQL.USER,
+											        GenericDAOSQL.PWD);
 			return this.conn;
-		DriverManager.registerDriver(new org.postgresql.Driver());
-		this.conn = DriverManager.getConnection(GenericDAOSQL.URI,
-		 								        GenericDAOSQL.USER,
-										        GenericDAOSQL.PWD);
-		return this.conn;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 	}
 }

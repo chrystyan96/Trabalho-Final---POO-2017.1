@@ -2,10 +2,15 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 import dominio.Fracionadas;
 import dominio.Localidade;
@@ -74,8 +79,11 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
 		}
     }
     
+
     /*
     public List<String> getRotaOrigem(){
+    public void getRotaOrigem(){
+
     	ArrayList rotaOrigem = new ArrayList();
     	try {
 			PreparedStatement stmt = conn.prepareStatement(SELECT_ROTAS_ORIGEM);
@@ -84,6 +92,7 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
     } */
     
     List<String> listOrigem = new ArrayList<>();
@@ -101,5 +110,6 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
     		e.printStackTrace();
     	}
     	return this.listOrigem;
+
     }
 }
