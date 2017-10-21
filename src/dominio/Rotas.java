@@ -33,6 +33,8 @@ public abstract class Rotas {
 	//rever esata etapa
 	public Rotas(String id, Rotas rota) {
 		this.setId(id);
+		this.setOrigem(rota.origem);
+		this.setDestino(rota.destino);
 	}
 	
 	public String getId() {

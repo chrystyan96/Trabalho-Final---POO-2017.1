@@ -18,14 +18,14 @@ public class Main {
 	static Diretas d4 = new Diretas("e203", 6, l7, l5, 30.00, 50.0, 0.40);
 	
 	static Fracionadas f1 = new Fracionadas("e300", d1);
-	static Fracionadas f2 = new Fracionadas("e301", d2);
+	static Fracionadas f2 = new Fracionadas("e301", d3);
 	//static Fracionadas f2 = new Fracionadas("e301", d3, d2);
 	//static Fracionadas f3 = new Fracionadas("f45", l1, l2);
 	
 	
 	public static void main(String[] args) {
 		f1.addRota(d2);
-		f2.addRota(d3);
+		f2.addRota(f1);
 		//f2.addRota(d3);
 		//f2.addRota(d3);
 		//f2.addRota(d2);
@@ -43,6 +43,7 @@ public class Main {
 		System.out.println(f1.mostrarRotas("Rondônia", "Maranhão"));
 		
 		System.out.println(f2.getOrigemRota());
+		System.out.println(f2.getDestinoRota());
 		
 		
 		//System.out.println(f1.mostrarOrigemRota());
