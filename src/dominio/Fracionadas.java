@@ -66,7 +66,7 @@ public class Fracionadas extends Rotas{
 	public String mostrarRotas(String origem, String destino) {
 		if(origem == this.getOrigemRota()) {
 			if(destino == this.getDestinoRota())
-				return "Rota: " + this.rotas.get(0).getIdFracionadas() + " - Dias: " + this.rotas.get(0).tempoEntrega() + 
+				return "Rota: " + this.rotas.get(0).id + " - Dias: " + this.rotas.get(0).tempoEntrega() + 
 					   " - R$: " + this.rotas.get(0).custoRota();
 		}
 		return null;
