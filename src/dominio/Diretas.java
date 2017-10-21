@@ -23,5 +23,12 @@ public class Diretas extends Rotas{
 		return this.getTempoEntrega();
 	}	
 	
+	public String getOrigem() {
+		return super.getOrigem();
+	}
+	
+	public String getDestino() {
+		return super.getDestino();
+	}
 	
 }
