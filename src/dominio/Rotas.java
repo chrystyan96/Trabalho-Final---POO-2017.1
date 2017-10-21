@@ -1,6 +1,5 @@
 package dominio;
 
-import java.util.ArrayList;
 
 public abstract class Rotas {
 
@@ -16,7 +15,6 @@ public abstract class Rotas {
 	public abstract double custoRota();
 	public abstract int tempoEntrega();
 	
-	//protected ArrayList<Rotas> rotas = new ArrayList<Rotas>();
 	
 	public Rotas(String id, int tempoEntrega, Localidade origem, Localidade destino, double capacidadeAlocada,
 				 double capacidadeTotal, double custoGrama) {
@@ -29,13 +27,12 @@ public abstract class Rotas {
 		this.setDestino(destino);
 	}
 	
-	
-	//rever esata etapa
 	public Rotas(String id, Rotas rota) {
 		this.setId(id);
 		this.setOrigem(rota.origem);
 		this.setDestino(rota.destino);
 	}
+	
 	
 	public String getId() {
 		return id;
