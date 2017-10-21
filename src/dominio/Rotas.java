@@ -21,19 +21,14 @@ public abstract class Rotas {
 		this.setCapacidadeAlocada(capacidadeAlocada);
 		this.setCapacidadeTotal(capacidadeTotal);
 		this.setCustoGrama(custoGrama);
+		this.setOrigem(origem);
+		this.setDestino(destino);
 	}
 	
-	public Rotas() {
-		
+	//rever esata etapa
+	public Rotas(String id, Rotas rota) {
+		this.setId(id);
 	}
-	
-	public Rotas(String id, Localidade origem, Localidade destino) {
-	this.setId(id);
-	//this.setTempoEntrega(tempoEntrega);
-	//this.setCapacidadeAlocada(capacidadeAlocada);
-	//this.setCapacidadeTotal(capacidadeTotal);
-	//this.setCustoGrama(custoGrama);
-}
 	
 	public String getId() {
 		return id;
@@ -65,19 +60,22 @@ public abstract class Rotas {
 	public void setCustoGrama(double custoGrama) {
 		this.custoGrama = custoGrama;
 	}
-	public Localidade getOrigem() {
-		return origem;
-	}
+	
 	public void setOrigem(Localidade origem) {
 		this.origem = origem;
 	}
-	public Localidade getDestino() {
-		return destino;
+	
+	public String getOrigem() {
+		return origem.getNome();
 	}
+	
 	public void setDestino(Localidade destino) {
 		this.destino = destino;
 	}
 	
+	public String getDestino() {
+		return destino.getNome();
+	}
 	
 	
 }
