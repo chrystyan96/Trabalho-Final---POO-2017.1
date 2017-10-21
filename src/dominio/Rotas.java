@@ -28,11 +28,8 @@ public abstract class Rotas {
 		this.setDestino(destino);
 	}
 	
-	public Rotas(String id, Rotas rota) {
-		this.setIdFracionadas(id);
-		this.setOrigem(rota.origem);
-		this.setDestino(rota.destino);
-	}
+	public Rotas() {}
+
 	
 	
 	public String getId() {

@@ -31,4 +31,8 @@ public class Diretas extends Rotas{
 		return super.getDestino();
 	}
 	
+	public String toString() {
+		return super.getId();
+	}
+	
 }

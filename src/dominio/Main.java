@@ -13,7 +13,8 @@ public class Main {
 	
 	static Diretas d1 = new Diretas("e200", 3, l1, l2, 10.0, 20.0, 0.15);
 	static Diretas d2 = new Diretas("e201", 2, l2, l3, 15.0, 25.0, 0.30);
-	static Diretas d3 = new Diretas("e202", 4, l3, l4, 30.00, 50.0, 0.40);
+	static Diretas d3 = new Diretas("e202", 4, l3, l4, 30.0, 50.0, 0.40);
+	static Diretas d4 = new Diretas("e204", 3, l4, l5, 35.0, 60.0, 0.60);
 	
 	static Fracionadas f1 = new Fracionadas("e300", d1);
 	static Fracionadas f2 = new Fracionadas("e301", f1);
@@ -30,6 +31,8 @@ public class Main {
 		f2.addRota(d3);
 		
 		f3.addRota(f2);
+		f3.addRota(d4);
+		
 		
 		//System.out.println("Tempo de Entrega: " + f1.tempoEntrega());
 		//System.out.println("Capacidade de transporte: " + f1.capacidadeTrasnporte());
@@ -43,14 +46,14 @@ public class Main {
 		
 		System.out.println(f3.getIdFracionadas());
 		
-		System.out.println(f2.getOrigemRota());
-		System.out.println(f2.getDestinoRota());
+		//System.out.println(f2.getOrigemRota());
+		//System.out.println(f2.getDestinoRota());
 		
 		
-		System.out.println(f3.getOrigemRota());
-		System.out.println(f3.getDestinoRota());
+		//System.out.println(f3.getOrigemRota());
+		//System.out.println(f3.getDestinoRota());
 		
-		System.out.println(f2.mostrarRotas("A", "D"));
+		//System.out.println(f2.mostrarRotas("A", "D"));
 		
 		//System.out.println(f1.mostrarOrigemRota());
 		//System.out.println(f1.getOrigemRota());

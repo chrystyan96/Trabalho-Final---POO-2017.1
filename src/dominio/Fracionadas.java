@@ -5,16 +5,47 @@ import java.util.ArrayList;
 
 public class Fracionadas extends Rotas{
 	
+	private String id;
+	private Rotas origem;
+	private Rotas destino;
+	
 	protected ArrayList<Rotas> rotas = new ArrayList<Rotas>();
 	
-	public Fracionadas(String id, Rotas rotaPrincipal) {
-		super(id, rotaPrincipal);
+	public Fracionadas (String id, Rotas origem, Rotas destino) {
+		this.setId(id);
+		this.setRotaOrigem(origem);
+		this.setRotaDestino(destino);
 	}
 	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return this.id;
+	}
+	
+	public Rotas getRotaOrigem() {
+		return this.origem;
+	}
+
+	public void setRotaOrigem(Rotas origem) {
+		this.origem = origem;
+	}
+
+	public Rotas getRotaDestino() {
+		return destino;
+	}
+
+	public void setRotaDestino(Rotas destino) {
+		this.destino = destino;
+	}
+
 	public void addRota(Rotas rota) {
 		this.rotas.add(rota);
 	}
 
+	
 	
 	@Override
 	public double capacidadeTrasnporte() {
@@ -46,6 +77,7 @@ public class Fracionadas extends Rotas{
 		return tempo + this.rotas.size() - 1;
 	}
 	
+	/*
 	public String getOrigemRota() {
 		return this.rotas.get(0).origem.getNome();
 	}
@@ -54,7 +86,9 @@ public class Fracionadas extends Rotas{
 		int tamanho = this.rotas.size() - 1;
 		return this.rotas.get(tamanho).destino.getNome();
 	}
+	*/
 	
+	/*
 	public boolean verificaRotas(String origem, String destino) {
 		if(origem == this.getOrigemRota()) {
 			if(destino == this.getDestinoRota())
@@ -66,14 +100,13 @@ public class Fracionadas extends Rotas{
 	public String mostrarRotas(String origem, String destino) {
 		if(origem == this.getOrigemRota()) {
 			if(destino == this.getDestinoRota())
-				return "Rota: " + this.rotas.get(0).id + " - Dias: " + this.rotas.get(0).tempoEntrega() + 
-					   " - R$: " + this.rotas.get(0).custoRota();
-		}
+				return this.rotas.get(0).toString();
+		} 
 		return null;
-	}
+	}*/
 
 	
 	public String toString() {
-		return "Fracionada";
+		return super.getIdFracionadas();
 	}
 }
