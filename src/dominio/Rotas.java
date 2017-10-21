@@ -80,7 +80,7 @@ public abstract class Rotas {
 	}
 	
 	public String getOrigem() {
-		return origem.getNome();
+		return origem.getId();
 	}
 	
 	public void setDestino(Localidade destino) {
@@ -88,7 +88,7 @@ public abstract class Rotas {
 	}
 	
 	public String getDestino() {
-		return destino.getNome();
+		return destino.getId();
 	}
 	
 	
