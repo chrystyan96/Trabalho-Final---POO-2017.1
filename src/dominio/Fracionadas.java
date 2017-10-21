@@ -4,22 +4,17 @@ package dominio;
 import java.util.ArrayList;
 
 public class Fracionadas extends Rotas{
-
-	private ArrayList<Rotas> rotas = new ArrayList<Rotas>();
 	
-	public Fracionadas(String id, Rotas rota) {
-		super(id, rota);
+	protected ArrayList<Rotas> rotas = new ArrayList<Rotas>();
+	
+	public Fracionadas(String id, Rotas rotaPrincipal) {
+		super(id, rotaPrincipal);
 	}
-	
 	
 	public void addRota(Rotas rota) {
 		this.rotas.add(rota);
 	}
-	
-	//public String origemCaminho() {
-		// to do
-	//}
-	
+
 	
 	@Override
 	public double capacidadeTrasnporte() {
@@ -71,11 +66,12 @@ public class Fracionadas extends Rotas{
 	public String mostrarRotas(String origem, String destino) {
 		if(origem == this.getOrigemRota()) {
 			if(destino == this.getDestinoRota())
-				return "Rota: " + this.rotas.get(0).id + " - Dias: " + this.rotas.get(0).tempoEntrega() + 
+				return "Rota: " + this.rotas.get(0).getIdFracionadas() + " - Dias: " + this.rotas.get(0).tempoEntrega() + 
 					   " - R$: " + this.rotas.get(0).custoRota();
 		}
 		return null;
 	}
+
 	
 	public String toString() {
 		return "Fracionada";

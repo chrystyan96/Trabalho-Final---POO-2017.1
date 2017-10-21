@@ -4,6 +4,7 @@ package dominio;
 public abstract class Rotas {
 
 	protected String id;
+	protected String idFracionadas;
 	protected int tempoEntrega;
 	protected Localidade origem;
 	protected Localidade destino;
@@ -28,18 +29,27 @@ public abstract class Rotas {
 	}
 	
 	public Rotas(String id, Rotas rota) {
-		this.setId(id);
+		this.setIdFracionadas(id);
 		this.setOrigem(rota.origem);
 		this.setDestino(rota.destino);
 	}
 	
 	
 	public String getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public String getIdFracionadas() {
+		return this.idFracionadas;
+	}
+	
+	public void setIdFracionadas(String id) {
+		this.idFracionadas = id;
+	}
+	
 	public int getTempoEntrega() {
 		return tempoEntrega;
 	}

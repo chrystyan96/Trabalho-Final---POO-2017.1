@@ -18,7 +18,7 @@ public class Main {
 	
 	static Fracionadas f1 = new Fracionadas("e300", d1);
 	static Fracionadas f2 = new Fracionadas("e301", f1);
-	static Fracionadas f3 = new Fracionadas("e302", f1);
+	static Fracionadas f3 = new Fracionadas("e302", f2);
 	//static Fracionadas f2 = new Fracionadas("e301", d3, d2);
 	//static Fracionadas f3 = new Fracionadas("f45", l1, l2);
 	
@@ -46,8 +46,11 @@ public class Main {
 		System.out.println(f2.getOrigemRota());
 		System.out.println(f2.getDestinoRota());
 		
+		
 		System.out.println(f3.getOrigemRota());
 		System.out.println(f3.getDestinoRota());
+		
+		System.out.println(f2.mostrarRotas("A", "F"));
 		
 		//System.out.println(f1.mostrarOrigemRota());
 		//System.out.println(f1.getOrigemRota());
