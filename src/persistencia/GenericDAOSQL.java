@@ -13,7 +13,7 @@ public abstract class GenericDAOSQL{
 	
 	private Connection conn = null;
 	
-	protected Connection getConnection(){
+	public Connection getConnection(){
 		try {
 			if(this.conn != null)
 				return this.conn;
@@ -21,8 +21,10 @@ public abstract class GenericDAOSQL{
 			this.conn = DriverManager.getConnection(GenericDAOSQL.URI,
 			 								        GenericDAOSQL.USER,
 											        GenericDAOSQL.PWD);
+			System.out.println("Conexão iniciada com sucesso...");
 			return this.conn;
         } catch (SQLException e) {
+        	System.out.println("Erro ao iniciar a conexão...");
             throw new RuntimeException(e);
         }
 	}
