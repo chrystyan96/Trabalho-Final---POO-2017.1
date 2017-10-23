@@ -1,0 +1,37 @@
+
+create table localidade(
+	id_local varchar(50),
+    nome varchar(50)
+);
+
+insert into localidade (id_local, nome) 
+	values ('t1', 'patopolis');
+insert into localidade (id_local, nome) 
+	values ('t2', 'gansopolis');
+    
+select *from localidade
+drop table localidade
+
+===================================
+
+
+create table Diretas(
+	idDiretas varchar(50),
+  	idLocalidadeOrigem varchar(50),
+    idLocalidadeDestino varchar(50),
+    tempoEntrega int,
+    capacidadeAlocada float,
+    capacidadeTotal float,
+    custoGrama float
+);
+
+
+select * from Diretas
+drop table Diretas
+
+insert into DIRETAS (idDiretas, idLocalidadeOrigem, idLocalidadeDestino, tempoEntrega, capacidadeAlocada,
+                      capacidadeTotal, custoGrama) values ('d1', 't1', 't2', 3, 1.5, 10.0, 0.5);
+                      
+===================================
+
+                   

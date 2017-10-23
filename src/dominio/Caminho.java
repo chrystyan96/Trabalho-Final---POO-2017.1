@@ -9,7 +9,7 @@ public class Caminho {
 	public void addCaminho(Fracionadas caminho) {
 		this.caminhos.add(caminho);
 	}
-	
+	/*
 	public String verificaCaminhos(String origem, String destino) {
 		String caminhos = "";
 		for (int i = 0; i < this.caminhos.size(); i++) {
@@ -17,6 +17,8 @@ public class Caminho {
 				caminhos += this.caminhos.get(i).id;
 		}
 		return caminhos;
+		
 	}
+	*/
 	
 }

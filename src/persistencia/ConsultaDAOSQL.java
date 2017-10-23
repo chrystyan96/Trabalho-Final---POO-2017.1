@@ -22,7 +22,7 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
                                                                 +" origem, destino)"
                                                                 +" values (?, ?, ?, ?, ?, ?, ?); ";
     
-    private static final String INSERT_LOCALIDADE = "INSERT INTO Localidade (id_local, nome) values (?, ?) ";
+    private static final String INSERT_LOCALIDADE = "INSERT INTO Localidade (idLocalidade, nome) values (?, ?) ";
     
     private static final String INSERT_FRACIONADAS = "INSERT INTO Fracionadas (id_fracionada, id_origem, id_destino)"
                                                     + " values (?, ?, ?) ";
@@ -34,6 +34,11 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
     private static final String SELECT_ROTAS_DESTINO = "SELECT r.destino "
                                                      +" FROM Rota r inner join Localidade l "
                                                      +" ON(r.id_local = l.id_local)";	
+    
+    
+    private static final String SELECT_LOCALIDADES = "SELECT * FROM localidade";
+    private static final String SELECT_TODAS_ROTAS = "SELECT * FROM Diretas";
+    
     
     private Connection conn = this.getConnection();
     //private DadosSQL dados = new DadosSQL();
@@ -111,5 +116,38 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
     	}
     	return this.listOrigem;
 
+    }
+    
+    public List<String> getLocalidades(){
+    	try {
+			PreparedStatement stmt = conn.prepareStatement(SELECT_LOCALIDADES);
+			ResultSet rSet = stmt.executeQuery();
+			while(rSet.next()) {
+				String localidades = rSet.getString("nome");
+				this.listOrigem.add(localidades);
+			}
+			rSet.close();
+	    	stmt.close();
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+    	return listOrigem;
+    }
+    
+    private List<String> listDiretas = new ArrayList<>();
+    public List<String> getDiretas(){
+    	try {
+			PreparedStatement stmt = conn.prepareStatement(SELECT_TODAS_ROTAS);
+			ResultSet rSet = stmt.executeQuery();
+			while(rSet.next()) {
+				String localidades = rSet.getString("idDiretas");
+				this.listDiretas.add(localidades);
+			}
+			rSet.close();
+	    	stmt.close();
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+    	return listDiretas;
     }
 }

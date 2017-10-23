@@ -1,10 +1,15 @@
 package dominio;
 
+import java.sql.Connection;
+
+import persistencia.ConsultaDAOSQL;
+import persistencia.GenericDAOSQL;
+
 public class Main {
 	
 	static Localidade l1 = new Localidade("t01", "A");
 	static Localidade l2 = new Localidade("t02", "B");
-	
+	/*
 	static Localidade l3 = new Localidade("t03", "C");
 	static Localidade l4 = new Localidade("t04", "D");
 	
@@ -21,9 +26,23 @@ public class Main {
 	static Fracionadas f3 = new Fracionadas("e302", f2);
 	//static Fracionadas f2 = new Fracionadas("e301", d3, d2);
 	//static Fracionadas f3 = new Fracionadas("f45", l1, l2);
+	*/
 	
+	//static GenericDAOSQL teste = new GenericDAOSQL();
+	//static Connection con;
+	
+	//static GenericDAOSQL insert = new GenericDAOSQL();
+	static ConsultaDAOSQL consulta = new ConsultaDAOSQL();
 	
 	public static void main(String[] args) {
+		
+		System.out.println(consulta.getLocalidades());
+		System.out.println(consulta.getDiretas());
+		
+		//con = teste.getConnection();
+		//System.out.println(con);
+		
+		/*
 		f1.addRota(d1);
 		f1.addRota(d2);
 		
@@ -57,6 +76,8 @@ public class Main {
 		
 		//System.out.println(f1.mostrarOrigemRota());
 		//System.out.println(f1.getOrigemRota());
+		 
+		 */
 	}
 
 }

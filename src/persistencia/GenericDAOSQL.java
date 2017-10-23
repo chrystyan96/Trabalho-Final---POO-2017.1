@@ -7,16 +7,18 @@ import java.sql.SQLException;
 import java.sql.Connection;
 
 public abstract class GenericDAOSQL{
-	private static final String URI = "jdbc:postgresql://localhost:5432/postgres";
-	private static final String USER = "trabPoo2017";	
+	private static final String URI = "jdbc:postgresql://localhost:5432/trabPoo2017";
+	private static final String USER = "postgres";	
 	private static final String PWD = "1234";
 	
 	private Connection conn = null;
 	
-	public Connection getConnection(){
+	protected Connection getConnection(){
 		try {
-			if(this.conn != null)
+			if(this.conn != null) {
+				System.out.println("Conectado");
 				return this.conn;
+			}
 			DriverManager.registerDriver(new org.postgresql.Driver());
 			this.conn = DriverManager.getConnection(GenericDAOSQL.URI,
 			 								        GenericDAOSQL.USER,
