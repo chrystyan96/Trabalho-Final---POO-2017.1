@@ -1,9 +1,8 @@
 package dominio;
 
-import java.sql.Connection;
+
 
 import persistencia.ConsultaDAOSQL;
-import persistencia.GenericDAOSQL;
 
 public class Main {
 	

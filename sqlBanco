@@ -1,21 +1,25 @@
+drop table localidade
 
-create table localidade(
-	id_local varchar(50),
+create table LOCALIDADE(
+	idLocalidade varchar(50),
     nome varchar(50)
 );
 
-insert into localidade (id_local, nome) 
+insert into localidade (idLocalidade, nome) 
 	values ('t1', 'patopolis');
-insert into localidade (id_local, nome) 
+insert into localidade (idLocalidade, nome) 
 	values ('t2', 'gansopolis');
+insert into localidade (idLocalidade, nome) 
+	values ('t3', 'ratolandia');
+
+insert into localidade (idLocalidade, nome) 
+	values ('t4', 'spoornevil');
+
+
     
 select *from localidade
-drop table localidade
 
-===================================
-
-
-create table Diretas(
+create table DIRETAS(
 	idDiretas varchar(50),
   	idLocalidadeOrigem varchar(50),
     idLocalidadeDestino varchar(50),
@@ -25,13 +29,42 @@ create table Diretas(
     custoGrama float
 );
 
-
 select * from Diretas
 drop table Diretas
 
 insert into DIRETAS (idDiretas, idLocalidadeOrigem, idLocalidadeDestino, tempoEntrega, capacidadeAlocada,
                       capacidadeTotal, custoGrama) values ('d1', 't1', 't2', 3, 1.5, 10.0, 0.5);
-                      
-===================================
+insert into DIRETAS (idDiretas, idLocalidadeOrigem, idLocalidadeDestino, tempoEntrega, capacidadeAlocada,
+                      capacidadeTotal, custoGrama) values ('d2', 't2', 't3', 2, 1.8, 5.0, 0.3);
 
-                   
+insert into DIRETAS (idDiretas, idLocalidadeOrigem, idLocalidadeDestino, tempoEntrega, capacidadeAlocada,
+                      capacidadeTotal, custoGrama) values ('d3', 't1', 't4', 2, 1.8, 5.0, 0.3);         
+insert into DIRETAS (idDiretas, idLocalidadeOrigem, idLocalidadeDestino, tempoEntrega, capacidadeAlocada,
+                      capacidadeTotal, custoGrama) values ('d4', 't4', 't3', 4, 2.0, 4.0, 0.8);
+                      
+create table Fracionada(
+	idFracionada varchar(50),
+    idDiretasOrigem varchar(50),
+    idDiretasDestino varchar(50)
+);
+
+select * from Fracionada
+drop table Fracionada
+
+insert into Fracionada (idFracionada, idDiretasOrigem, idDiretasDestino) 
+			 values ('f1', 'd1', 'd2');
+
+insert into Fracionada (idFracionada, idDiretasOrigem, idDiretasDestino) 
+			 values ('f2', 'd3', 'd4');
+             
+insert into Fracionada (idFracionada, idDiretasOrigem, idDiretasDestino) 
+			 values ('f3', 'd2', 'd4');             
+             
+select f.idFracionada from Fracionada f inner join Diretas d
+	ON (f.idDiretasOrigem = d.idDiretas) inner join Localidade l
+    ON (d.idLocalidadeOrigem = l.idLocalidade) 
+	where l.nome = 'patopolis';
+    
+    //fazer 'select' aninhado para pegar os destinos das rotas 
+    and (d.idLocalidadeDestino = l.idLocalidade)
+    and (f.idDiretasDestino = d.idDiretas)
