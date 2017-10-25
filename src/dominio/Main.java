@@ -35,7 +35,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		System.out.println(consulta.getLocalidades());
+		//System.out.println(consulta.getLocalidades());
 		System.out.println(consulta.getDiretas());
 		
 		//con = teste.getConnection();

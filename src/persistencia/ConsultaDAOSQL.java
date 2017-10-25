@@ -37,7 +37,10 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
     
     
     private static final String SELECT_LOCALIDADES = "SELECT * FROM localidade";
-    private static final String SELECT_TODAS_ROTAS = "SELECT * FROM Diretas";
+    private static final String SELECT_ROTAS =  "select f.id_fracionada" +
+ 										    	"from Fracionadas f inner join Direta d" + 
+ 										    	"ON (f.id_rota = d.id_rota)" + 
+										    	"where d.origem = 'patopolis' and d.destino = 'spoornevil'";
     
     
     private Connection conn = this.getConnection();
@@ -50,7 +53,6 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
 			stmt.setString(1, local.getId());  
 			stmt.setString(2, local.getNome());    
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -66,7 +68,6 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
             stmt.setString(5, rota.getOrigem());  
             stmt.setString(6, rota.getDestino());              
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -79,7 +80,6 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
 			stmt.setString(2, frac.getRotaOrigem().getId());
 			stmt.setString(3, frac.getRotaDestino().getId());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -137,11 +137,11 @@ public class ConsultaDAOSQL extends GenericDAOSQL{
     private List<String> listDiretas = new ArrayList<>();
     public List<String> getDiretas(){
     	try {
-			PreparedStatement stmt = conn.prepareStatement(SELECT_TODAS_ROTAS);
+			PreparedStatement stmt = conn.prepareStatement(SELECT_ROTAS);
 			ResultSet rSet = stmt.executeQuery();
 			while(rSet.next()) {
-				String localidades = rSet.getString("idDiretas");
-				this.listDiretas.add(localidades);
+				String rotas = rSet.getString("f.id_fracionada");
+				this.listDiretas.add(rotas);
 			}
 			rSet.close();
 	    	stmt.close();
