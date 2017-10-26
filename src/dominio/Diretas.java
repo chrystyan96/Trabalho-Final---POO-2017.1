@@ -3,14 +3,14 @@ package dominio;
 public class Diretas extends Rotas{
 
 	
-	public Diretas(String id, int tempoEntrega, Localidade origem, Localidade destino, double capacidadeAlocada,
-			 	   double capacidadeTotal, double custoGrama ) {
-		super(id, tempoEntrega, origem, destino, capacidadeAlocada, capacidadeTotal, custoGrama);
+	public Diretas(String id, String nome, int tempoEntrega,  double custoGrama,
+			 	   double capacidadeTotal, String origem, String destino) {
+		super(id, nome, tempoEntrega, custoGrama, capacidadeTotal, origem, destino);
 	}
 	
 	@Override
 	public double capacidadeTrasnporte() {
-		return this.getCapacidadeTotal() - this.getCapacidadeAlocada();
+		return this.getCapacidadeTotal();
 	}
 	
 	@Override

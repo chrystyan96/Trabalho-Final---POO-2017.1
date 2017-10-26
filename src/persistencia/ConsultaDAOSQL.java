@@ -25,9 +25,6 @@ public class ConsultaDAOSQL extends GenericDAOSQL implements IConsultaRotas{
 
     private static final String SELECT_DESTINOS = "select distinct destino from ROTA order by destino";	
     
-    private static final String SELECT_ROTAS =  "select nome, tempoDias, custoGrama, capacidadeTotal" + 
-    											"from ROTA" + 
-    											"where origem = '?' and destino = '?'";
     
     
     private List<String> listOrigens = new ArrayList<>();
@@ -73,9 +70,5 @@ public class ConsultaDAOSQL extends GenericDAOSQL implements IConsultaRotas{
     	return listDestinos;
 	}
     
-	
-	public String mostrarCaminhos(String origem, String destino) {
-		
-	}
     
 }

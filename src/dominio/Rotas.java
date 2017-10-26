@@ -4,11 +4,11 @@ package dominio;
 public abstract class Rotas {
 
 	protected String id;
+	protected String nome;
 	protected String idFracionadas;
 	protected int tempoEntrega;
-	protected Localidade origem;
-	protected Localidade destino;
-	protected double capacidadeAlocada;
+	protected String origem;
+	protected String destino;
 	protected double capacidadeTotal;
 	protected double custoGrama;
 	
@@ -17,20 +17,29 @@ public abstract class Rotas {
 	public abstract int tempoEntrega();
 	
 	
-	public Rotas(String id, int tempoEntrega, Localidade origem, Localidade destino, double capacidadeAlocada,
-				 double capacidadeTotal, double custoGrama) {
+	public Rotas(String id, String nome, int tempoEntrega, double custoGrama,
+				 double capacidadeTotal, String origem, String destino) {
 		this.setId(id);
 		this.setTempoEntrega(tempoEntrega);
-		this.setCapacidadeAlocada(capacidadeAlocada);
-		this.setCapacidadeTotal(capacidadeTotal);
 		this.setCustoGrama(custoGrama);
+		this.setCapacidadeTotal(capacidadeTotal);
 		this.setOrigem(origem);
 		this.setDestino(destino);
 	}
 	
 	public Rotas() {}
-
 	
+	public boolean verificarPeso(double peso) {
+		return peso < this.capacidadeTrasnporte();
+	}
+	
+	public String toString(double peso) {
+		return this.getNome() + " - " + this.tempoEntrega() + " dias - R$ " + this.calcularCustoPeso(peso);
+	}
+	
+	public double calcularCustoPeso(double peso) {
+		return peso * this.getCustoGrama();
+	}
 	
 	public String getId() {
 		return this.id;
@@ -39,6 +48,12 @@ public abstract class Rotas {
 		this.id = id;
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public String getIdFracionadas() {
 		return this.idFracionadas;
 	}
@@ -53,12 +68,7 @@ public abstract class Rotas {
 	public void setTempoEntrega(int tempoEntrega) {
 		this.tempoEntrega = tempoEntrega;
 	}
-	public double getCapacidadeAlocada() {
-		return capacidadeAlocada;
-	}
-	public void setCapacidadeAlocada(double capacidadeAlocada) {
-		this.capacidadeAlocada = capacidadeAlocada;
-	}
+
 	public double getCapacidadeTotal() {
 		return capacidadeTotal;
 	}
@@ -72,20 +82,20 @@ public abstract class Rotas {
 		this.custoGrama = custoGrama;
 	}
 	
-	public void setOrigem(Localidade origem) {
+	public void setOrigem(String origem) {
 		this.origem = origem;
 	}
 	
 	public String getOrigem() {
-		return origem.getId();
+		return origem;
 	}
 	
-	public void setDestino(Localidade destino) {
+	public void setDestino(String destino) {
 		this.destino = destino;
 	}
 	
 	public String getDestino() {
-		return destino.getId();
+		return destino;
 	}
 	
 	
