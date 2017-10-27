@@ -14,9 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-import dominio.Fracionadas;
-import dominio.Localidade;
-import dominio.Rotas;
+//import dominio.Rotas;
 
 public class ConsultaDAOSQL extends GenericDAOSQL implements IConsultaRotas{
 	
@@ -25,14 +23,12 @@ public class ConsultaDAOSQL extends GenericDAOSQL implements IConsultaRotas{
 
     private static final String SELECT_DESTINOS = "select distinct destino from ROTA order by destino";	
     
-    private static final String SELECT_ROTAS =  "select nome, tempoDias, custoGrama, capacidadeTotal" + 
-    											"from ROTA" + 
-    											"where origem = '?' and destino = '?'";
+    private static final String SELECT_ROTAS =  "select nome, tempoDias, custoGrama, capacidadeTotal from ROTA where origem = ? and destino = ?";
     
     
     private List<String> listOrigens = new ArrayList<>();
     private List<String> listDestinos = new ArrayList<>();
-    
+    private List<String> listRotas = new ArrayList<>();
     
     private Connection conn = getConnection();
     //private DadosSQL dados = new DadosSQL();
@@ -72,5 +68,23 @@ public class ConsultaDAOSQL extends GenericDAOSQL implements IConsultaRotas{
 		}
     	return listDestinos;
 	}
-    
+	
+	public List<String> mostrarCaminhos(String origem, String destino) throws Exception{
+		try {
+			PreparedStatement stmt = conn.prepareStatement(SELECT_ROTAS);
+			stmt.setString(1, origem);
+			stmt.setString(2, destino);
+			ResultSet rSet = stmt.executeQuery();
+			while(rSet.next()) {
+				String rotas = rSet.getString("nome") + (" - Dias ") + rSet.getString("tempoDias") + (" - Custo - ") + 
+							   rSet.getString("custoGrama") + (" - Capacidade ") + rSet.getString("capacidadeTotal") + "\n";
+				this.listRotas.add(rotas);
+			}
+			rSet.close();
+	    	stmt.close();
+		} catch (SQLException e) {
+			e.getMessage();
+		}
+    	return listRotas;
+	}
 }

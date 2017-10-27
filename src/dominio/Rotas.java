@@ -3,7 +3,7 @@ package dominio;
 
 public abstract class Rotas {
 
-	protected String id;
+	protected int id;
 	protected String nome;
 	protected String idFracionadas;
 	protected int tempoEntrega;
@@ -17,7 +17,7 @@ public abstract class Rotas {
 	public abstract int tempoEntrega();
 	
 	
-	public Rotas(String id, String nome, int tempoEntrega, double custoGrama,
+	public Rotas(int id, String nome, int tempoEntrega, double custoGrama,
 				 double capacidadeTotal, String origem, String destino) {
 		this.setId(id);
 		this.setTempoEntrega(tempoEntrega);
@@ -41,10 +41,10 @@ public abstract class Rotas {
 		return peso * this.getCustoGrama();
 	}
 	
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

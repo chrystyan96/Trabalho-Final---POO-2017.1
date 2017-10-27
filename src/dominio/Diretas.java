@@ -3,7 +3,7 @@ package dominio;
 public class Diretas extends Rotas{
 
 	
-	public Diretas(String id, String nome, int tempoEntrega,  double custoGrama,
+	public Diretas(int id, String nome, int tempoEntrega,  double custoGrama,
 			 	   double capacidadeTotal, String origem, String destino) {
 		super(id, nome, tempoEntrega, custoGrama, capacidadeTotal, origem, destino);
 	}
@@ -32,7 +32,8 @@ public class Diretas extends Rotas{
 	}
 	
 	public String toString() {
-		return super.getId();
+		String id = "" + super.getId();
+		return id;
 	}
 	
 }

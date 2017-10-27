@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import GUI.IInserirRotas;
-import dominio.Fracionadas;
 import dominio.Rotas;
 
 public class InsertDAOSQL extends GenericDAOSQL implements IInserirRotas{
@@ -28,7 +27,7 @@ public class InsertDAOSQL extends GenericDAOSQL implements IInserirRotas{
 	private Connection conn = getConnection();
 	
 	@Override
-	public void InserirRota() throws SQLException{
+	public void InserirRota(Rotas rota) throws SQLException{
 		PreparedStatement stmt = conn.prepareStatement(InsertDAOSQL.INSERT_ROTA);
 		conn.setAutoCommit(false);
 		try {
@@ -41,7 +40,7 @@ public class InsertDAOSQL extends GenericDAOSQL implements IInserirRotas{
 				stmt.setString(6, this.destinoRotas.get(i));
 				stmt.addBatch();
 			}
-			int[] result = stmt.executeBatch();
+			//int[] result = stmt.executeBatch();
 			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,7 +55,7 @@ public class InsertDAOSQL extends GenericDAOSQL implements IInserirRotas{
 	ArrayList<Integer> filhoCaminhos = new DadosSQL().getFilhoCaminhos();
 
 	@Override
-	public void InserirCaminho() throws SQLException{
+	public void InserirCaminho(Rotas pai, Rotas filho) throws SQLException{
 		PreparedStatement stmt = conn.prepareStatement(InsertDAOSQL.INSERT_CAMINHO);
 		conn.setAutoCommit(false);
 		try {
@@ -65,7 +64,7 @@ public class InsertDAOSQL extends GenericDAOSQL implements IInserirRotas{
 				stmt.setInt(2, this.filhoCaminhos.get(i));
 				stmt.addBatch();
 			}
-			int[] result = stmt.executeBatch();
+			//int[] result = stmt.executeBatch();
 			conn.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -4,20 +4,26 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
+//import java.util.Properties;
 
-import dominio.LerProps;
+//import dominio.LerProps;
 
 import java.sql.Connection;
 
 public abstract class GenericDAOSQL{
+	/*
 	private static Properties config = new LerProps().getConfig();
 	
 	private static final String URI = config.getProperty("URI");
 	private static final String USER = config.getProperty("LOGIN");
 	private static final String PASS = config.getProperty("PASS");
 	private static final String DRIVE = config.getProperty("DRIVE");
+	*/
 	
+	private static final String URI = "jdbc:postgresql://localhost:5432/trabPoo2017";
+	private static final String USER = "postgres";	
+	private static final String PASS = "1234";
+	//private static final String DRIVE = "org.postgresql.Drivre()";
 	
 	private static Connection conn = null;
 	
@@ -27,8 +33,8 @@ public abstract class GenericDAOSQL{
 				System.out.println("Conectado");
 				return conn;
 			}
-			//DriverManager.registerDriver(new org.postgresql.Driver());
-			Class.forName(DRIVE);
+			DriverManager.registerDriver(new org.postgresql.Driver());
+			//Class.forName(DRIVE);
 			conn = DriverManager.getConnection(GenericDAOSQL.URI,
 			 								        GenericDAOSQL.USER,
 											        GenericDAOSQL.PASS);
@@ -37,7 +43,8 @@ public abstract class GenericDAOSQL{
         } catch (SQLException e) {
         	System.out.println("Erro ao iniciar a conexão...");
             throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        //} catch (ClassNotFoundException e) {
+        } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

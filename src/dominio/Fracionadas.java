@@ -5,23 +5,23 @@ import java.util.ArrayList;
 
 public class Fracionadas extends Rotas{
 	
-	private String id;
+	private int id;
 	private Rotas origem;
 	private Rotas destino;
 	
 	protected ArrayList<Rotas> rotas = new ArrayList<Rotas>();
 	
-	public Fracionadas (String id, Rotas origem, Rotas destino) {
+	public Fracionadas (int id, Rotas origem, Rotas destino) {
 		this.setId(id);
 		this.setRotaOrigem(origem);
 		this.setRotaDestino(destino);
 	}
 	
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 	
